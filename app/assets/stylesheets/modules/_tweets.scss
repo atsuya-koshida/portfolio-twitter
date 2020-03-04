@@ -10,6 +10,7 @@
   justify-content: center;
   &__menu {
     @extend .font-lr;
+    padding-top: 47px;
     .menu-item {
       margin-top: 20px;
     }
