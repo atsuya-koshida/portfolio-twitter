@@ -17,3 +17,6 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+$(function() {
+  setTimeout("$('.notification').fadeOut('slow')", 1000);
+});

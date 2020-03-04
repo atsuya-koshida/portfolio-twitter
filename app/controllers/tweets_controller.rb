@@ -1,18 +1,17 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only: [:edit, :show]
+  before_action :set_tweet, only: [:edit, :update, :show, :destroy]
   
   def index
-    @tweets = Tweet.where(user_id: current_user.id).order("created_at DESC")
+    @tweets = Tweet.includes(:user).order("created_at DESC")
     @tweet = Tweet.new
   end
 
   def create
     @tweet = Tweet.new(tweet_params)
     if @tweet.save
-      redirect_to root_path
+      redirect_to root_path, notice: 'ツイートを送信しました'
     else
-      # flash.now[:alert] = '出品に失敗しました'
-      render :new
+      redirect_to root_path
     end
   end
 
@@ -23,8 +22,16 @@ class TweetsController < ApplicationController
   end
 
   def update
-    tweet = tweet.find(params[:id])
-    tweet.update(tweet_params)
+    if @tweet.update(tweet_params)
+      redirect_to root_path, notice: 'ツイートを更新しました'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @tweet.destroy
+    redirect_to root_path, alert: 'ツイートを削除しました'
   end
 
   private

@@ -1,0 +1,22 @@
+#timeline
+  = render "shared/timelineLeft"
+  .timeline-center
+    .timeline-center__header
+      %span.current-menu
+        ツイート編集
+    .timeline-center__form
+      .tweet-item
+        .tweet-item__left
+          .image-profile
+        .tweet-item__right
+          = form_with model: @tweet, local: true do |f|
+            .tweet-form
+              = f.text_area :text, class: "tweet-text-area", placeholder: 'いまどうしてる？'
+            .tweet-btn
+              .image-btn
+                = f.label :images, class: 'mask-image' do
+                  = f.file_field :images, multiple: true, class: "hidden"
+                  = icon('fas', 'image', class: 'icon')
+              .submit-btn
+                = f.submit '編集を適用する', class: "btn btn-primary"
+  = render "shared/timelineRight"

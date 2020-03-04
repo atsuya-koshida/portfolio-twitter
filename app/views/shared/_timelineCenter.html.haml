@@ -1,0 +1,36 @@
+.timeline-center
+  .timeline-center__header
+    %span.current-menu
+      ホーム
+  .timeline-center__form
+    .tweet-item
+      .tweet-item__left
+        .image-profile
+      .tweet-item__right
+        = form_with model: @tweet, url: tweets_path, method: :post, class: :new_tweet, local: true do |f|
+          .tweet-form
+            = f.text_area :text, class: "tweet-text-area", placeholder: 'いまどうしてる？'
+          .tweet-btn
+            .image-btn
+              = f.label :images, class: 'mask-image' do
+                = f.file_field :images, multiple: true, class: "hidden"
+                = icon('fas', 'image', class: 'icon')
+            .submit-btn
+              = f.submit 'ツイートする', class: "btn btn-primary"
+  .timeline-center__space
+  .timeline-center__tweet
+  - @tweets.each do |tweet|
+    = link_to tweet_path(tweet.id), class: "link" do
+      .tweet-item
+        .tweet-item__left
+          .image-profile
+        .tweet-item__right
+          .tweet-title
+            %span.tweet-user
+              = tweet.user.nickname
+            %span.tweet-date
+              = tweet.created_at.to_s(:datetime_jp)
+            %span.like-btn
+              = icon('far fa-heart fa-fw', class: 'like-icon')
+          .tweet-content
+            = simple_format(tweet.text)

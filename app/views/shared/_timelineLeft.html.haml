@@ -1,0 +1,30 @@
+.timeline-left
+  %ul.timeline-left__menu
+    - if user_signed_in?
+      = link_to root_path, class: "link" do
+        %li.menu-item
+          = icon("fas fa-home", class: 'menu-icon')
+          ホーム
+      %li.menu-item
+        = icon('far fa-heart', class: 'menu-icon')
+        いいね一覧
+      %li.menu-item
+        = icon("fas fa-home", class: 'menu-icon')
+        マイページ
+      = link_to destroy_user_session_path, method: :delete, class: "link" do
+        %li.menu-item
+          = icon("fas fa-sign-out-alt", class: 'menu-icon')
+          ログアウト
+    - else
+      = link_to root_path, class: "link" do
+        %li.menu-item
+          = icon("fas fa-home", class: 'menu-icon')
+          ホーム
+      = link_to new_user_registration_path, class: "link" do
+        %li.menu-item
+          = icon("fas fa-user-plus", class: 'menu-icon')
+          新規登録
+      = link_to new_user_session_path, class: "link" do
+        %li.menu-item
+          = icon("fas fa-sign-in-alt", class: 'menu-icon')
+          ログイン
