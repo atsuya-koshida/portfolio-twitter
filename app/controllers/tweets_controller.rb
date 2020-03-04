@@ -3,9 +3,6 @@ class TweetsController < ApplicationController
   
   def index
     @tweets = Tweet.where(user_id: current_user.id).order("created_at DESC")
-  end
-
-  def new
     @tweet = Tweet.new
   end
 
@@ -32,7 +29,7 @@ class TweetsController < ApplicationController
 
   private
   def tweet_params
-    params.require(:tweet).permit(:title, :content, images: []).merge(user_id: current_user.id)
+    params.require(:tweet).permit(:text, images: []).merge(user_id: current_user.id)
   end
 
   def set_tweet
