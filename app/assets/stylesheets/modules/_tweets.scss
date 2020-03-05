@@ -54,12 +54,9 @@
       margin-left: 20px;
     }
     .tweet-image {
-      height: 240px;
-      width: 480px;
       .tweet-photo {
-        height: 240px;
-        width: 480px;
-        background-size: cover;
+        width: 100%;
+        object-fit: cover;
       }
     }
     .tweet-text-area {
