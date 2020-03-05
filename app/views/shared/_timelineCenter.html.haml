@@ -34,3 +34,7 @@
               = icon('far fa-heart fa-fw', class: 'like-icon')
           .tweet-content
             = simple_format(tweet.text)
+          - if tweet.images.attached?
+            - tweet.images.each do |image|
+              .tweet-image
+                = image_tag image, class: "tweet-photo"
