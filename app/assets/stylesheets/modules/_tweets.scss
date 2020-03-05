@@ -10,6 +10,7 @@
   justify-content: center;
   &__menu {
     @extend .font-lr;
+    padding-top: 47px;
     .menu-item {
       margin-top: 20px;
     }
@@ -46,11 +47,41 @@
       padding-left: 15px;
     }
     .tweet-user {
-      @extend .font-md;
+      @extend .font-lr;
     }
     .tweet-date {
       @extend .font-sm;
       margin-left: 20px;
+    }
+    .tweet-image {
+      height: 240px;
+      width: 480px;
+      .tweet-photo {
+        height: 240px;
+        width: 480px;
+        background-size: cover;
+      }
+    }
+    .tweet-text-area {
+      width: 100%;
+      outline: none;
+      border: none;
+    }
+    .tweet-btn {
+      display: flex;
+      justify-content: flex-end;
+      .image-btn {
+        position: relative;
+        .mask-image {
+          font-size: 1.3rem;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          .hidden {
+            display: none;
+          }
+        }
+      }
     }
   }
 
@@ -64,4 +95,8 @@
   width: 50px;
   border-radius: 50%;
   background-color: skyblue;
+}
+
+.timeline-right {
+  width: $rightTimelineWidth;
 }

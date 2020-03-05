@@ -1,0 +1,33 @@
+#timeline
+  = render "shared/timelineLeft"
+  .timeline-center
+    .timeline-center__header
+      %span.current-menu
+        ツイート詳細
+    .timeline-center__space
+    .timeline-center__tweet
+      .tweet-item
+        .tweet-item__left
+          .image-profile
+        .tweet-item__right
+          .tweet-title
+            %span.tweet-user
+              = @tweet.user.nickname
+            %span.tweet-date
+              = @tweet.created_at.to_s(:datetime_jp)
+            %span.like-btn
+              = icon('far fa-heart fa-fw', class: 'like-icon')
+          .tweet-content
+            = simple_format(@tweet.text)
+          - if user_signed_in? && current_user.id == @tweet.user_id
+            = link_to edit_tweet_path do
+              .btn.btn-primary
+                編集する
+            = link_to tweet_path, method: :delete, data: {confirm: "本当に削除しますか?"} do
+              .btn.btn-danger
+                削除する
+          - if @tweet.images.attached?
+            - @tweet.images.each do |image|
+              .tweet-image
+                = image_tag image, class: "tweet-photo"
+  = render "shared/timelineRight"
