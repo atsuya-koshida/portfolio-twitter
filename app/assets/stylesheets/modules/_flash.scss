@@ -1,0 +1,15 @@
+.notification {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  .notice {
+    background-color: #3CCACE;
+    color: white;
+    text-align: center;
+  }
+  .alert {
+    background-color: rgb(222, 12, 12);
+    color: white;
+    text-align: center;
+  }
+}

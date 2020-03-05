@@ -1,0 +1,97 @@
+@import "modules/reset";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "bootstrap";
+@import "modules/flash";
+@import 'modules/mixin';
+@import "modules/variables";
+@import "modules/header";
+@import "modules/tweets";
+
+body {
+  font-family: "Kameron", "Noto Sans JP", sans-serif;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+.font-sm {
+  font-size: 12px;
+}
+.font-md {
+  font-size: 17px;
+}
+.font-lr {
+  font-size: 20px;
+}
+.font-lg {
+  font-size: 25px;
+}
+.mb-sm {
+  margin-bottom: 16px !important;
+}
+.mb-md {
+  margin-bottom: 40px !important;
+}
+.mb-lg {
+  margin-bottom: 80px !important;
+}
+.mt-sm {
+  margin-top: 20px !important;
+}
+.mt-md {
+  margin-top: 40px !important;
+}
+.mt-lg {
+  margin-top: 80px !important;
+}
+.pt-sm {
+  padding-top: 16px !important;
+}
+
+.pt-md {
+  padding-top: 40px !important;
+}
+
+.pt-lg {
+  padding-top: 80px !important;
+}
+
+.pb-sm {
+  padding-bottom: 16px !important;
+}
+.pb-md {
+  padding-bottom: 40px !important;
+}
+.pb-lg {
+  padding-bottom: 80px !important;
+}
+.content-width {
+  width: 70%;
+  margin: 0 auto;
+  max-width: $contentMaxWidth;
+}
+.main-title {
+  @extend .font-lg;
+  font-weight: 600;
+  margin-bottom: 0;
+  display: block;
+}
+.sub-title {
+  @extend .font-sm;
+  color: $cSubTitle;
+}
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  text-decoration: none;
+  color: $cBlack;
+  &:hover {
+  text-decoration: none;
+  color: $cBlack;
+  }
+}
