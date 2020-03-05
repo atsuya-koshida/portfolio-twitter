@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
 
-  has_many :tweets
+  has_many :tweets, dependent: :destroy
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
