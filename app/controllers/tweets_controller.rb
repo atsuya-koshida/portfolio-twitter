@@ -1,9 +1,11 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:edit, :update, :show, :destroy]
+  before_action :set_like, only: [:index, :show]
   
   def index
     @tweets = Tweet.includes(:user).order("created_at DESC")
     @tweet = Tweet.new
+    @like = Like.new
   end
 
   def create
@@ -16,6 +18,7 @@ class TweetsController < ApplicationController
   end
 
   def show
+    @like = Like.new
   end
 
   def edit
@@ -41,6 +44,10 @@ class TweetsController < ApplicationController
 
   def set_tweet
     @tweet = Tweet.find(params[:id])
+  end
+
+  def set_like
+    @like = Like.new
   end
 
   
