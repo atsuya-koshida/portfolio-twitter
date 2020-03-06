@@ -1,21 +1,27 @@
 class LikesController < ApplicationController
-  before_action :set_variables
+  # def create
+  #   @like = Like.create(user_id: current_user.id, tweet_id: params[:tweet_id])
+  #   @likes = Like.where(tweet_id: params[:tweet_id])
+  #   @tweets = Tweet.all
+  # end
 
-  def like
-    like = current_user.likes.new(tweet_id: @tweet.id)
+  # def destroy
+  #   like = Like.find_by(user_id: current_user.id, tweet_id: params[:tweet_id])
+  #   like.destroy
+  # end
+
+  def create
+    # こう記述することで、「current_userに関連したlikeクラスの新しいインスタンス」が作成可能。
+    # つまり、like.user_id = current_user.idが済んだ状態で生成されている。
+    # buildはnewと同じ意味で、アソシエーションしながらインスタンスをnewする時に形式的に使われる。
+    like = current_user.likes.build(tweet_id: params[:tweet_id])
     like.save
+    redirect_to tweets_path
   end
 
-  def unlike
-    like = current_user.likes.find_by(tweet_id: @tweet.id)
+  def destroy
+    like = like.find_by(tweet_id: params[:tweet_id], user_id: current_user.id)
     like.destroy
-  end
-
-  private
-
-  def set_variables
-    @tweet = Tweet.find(params[:tweet_id])
-    @id_name = "#like-link-#{@tweet.id}"
-    @id_heart = "#heart-#{@tweet.id}"
+    redirect_to tweets_path
   end
 end

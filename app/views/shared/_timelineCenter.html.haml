@@ -30,8 +30,20 @@
               = tweet.user.nickname
             %span.tweet-date
               = tweet.created_at.to_s(:datetime_jp)
-            %span.like-btn
-              = icon('far fa-heart fa-fw', class: 'like-icon')
+            - if user_signed_in?
+              - if tweet.liked_by?(current_user)
+                / ログインしているユーザーがファボしたかどうかで分岐
+                %p
+                  %span お気に入り解除:
+                  = link_to tweet.likes.count, tweet_likes_path(tweet.id), method: :delete
+              - else
+                %p
+                  %span お気に入り登録:
+                  = link_to tweet.likes.count, tweet_likes_path(tweet.id), method: :post
+            - else
+              %p
+                %span お気に入り数:
+                = tweet.favorites.count
           .tweet-content
             = simple_format(tweet.text)
           - if tweet.images.attached?
