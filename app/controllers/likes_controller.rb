@@ -16,12 +16,12 @@ class LikesController < ApplicationController
     # buildはnewと同じ意味で、アソシエーションしながらインスタンスをnewする時に形式的に使われる。
     like = current_user.likes.build(tweet_id: params[:tweet_id])
     like.save
-    redirect_to tweets_path
+    redirect_to root_path
   end
 
   def destroy
-    like = like.find_by(tweet_id: params[:tweet_id], user_id: current_user.id)
+    like = Like.find_by(tweet_id: params[:tweet_id], user_id: current_user.id)
     like.destroy
-    redirect_to tweets_path
+    redirect_to root_path
   end
 end

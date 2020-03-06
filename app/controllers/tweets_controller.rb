@@ -19,6 +19,8 @@ class TweetsController < ApplicationController
 
   def show
     @like = Like.new
+    @comment = Comment.new
+    @comments = @tweet.comments.includes(:user)
   end
 
   def edit
@@ -49,6 +51,4 @@ class TweetsController < ApplicationController
   def set_like
     @like = Like.new
   end
-
-  
 end
