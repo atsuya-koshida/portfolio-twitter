@@ -6,4 +6,3 @@ class UsersController < ApplicationController
     @liked_tweets = @user.liked_tweets
   end
 end
-　
