@@ -25,7 +25,7 @@ $(function() {
       let html = buildHTML(data);
       $('.comments').append(html);
       $('.comment-text').val('');
-      $('.submit').prop('disabled', false);
+      $('.comment-btn').prop('disabled', false);
     })
     .fail(function(){
       alert('error');

@@ -3,24 +3,12 @@
   .timeline-center
     .timeline-center__header
       %span.current-menu
-        マイページ
+        = @user.nickname
+        のページ
       = render "relationships/followbutton", user: @user
-    .timeline-center__form
-      .tweet-item
-        .tweet-item__left
-          .image-profile
-        .tweet-item__right
-          = form_with model: @tweet, url: tweets_path, method: :post, class: :new_tweet, local: true do |f|
-            .tweet-form
-              = f.text_area :text, class: "tweet-text-area", placeholder: 'いまどうしてる？'
-            .tweet-btn
-              .image-btn
-                = f.label :images, class: 'mask-image' do
-                  = f.file_field :images, multiple: true, class: "hidden"
-                  = icon('fas', 'image', class: 'icon')
-              .submit-btn
-                = f.submit 'ツイートする', class: "btn btn-primary"
-    .timeline-center__space
+    .timeline-center__menu
+      = link_to "ツイート一覧", user_path(@user.id), class: "mytweet-menu"
+      = link_to "いいね一覧", "#", class: "mylike-menu"
     .timeline-center__tweet
     - @tweets.each do |tweet|
       = link_to tweet_path(tweet.id), class: "link" do

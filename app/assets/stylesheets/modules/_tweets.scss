@@ -34,6 +34,39 @@
     border: 1px solid #e6e6e6;
   }
 
+
+  &__menu {
+    display: flex;
+    .mytweet-menu {
+      width: 50%;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      text-decoration: none;
+    }
+    .mylike-menu {
+      width: 50%;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      text-decoration: none;
+    }
+  }
+
+  &__comment {
+    margin: 20px 0;
+    padding: 30px;
+    .comment-text {
+      width: 100%;
+    }
+    .comment-btn {
+      width: 100%;
+    }
+    .comments {
+      margin: 10px 0;
+    }
+  }
+
   .tweet-item {
     padding: 10px 15px;
     border: 1px solid #e6e6e6;
@@ -56,6 +89,7 @@
     }
     .tweet-image {
       .tweet-photo {
+        height: 200px;
         width: 100%;
         object-fit: cover;
       }
