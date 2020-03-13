@@ -6,7 +6,7 @@
     .tweet-item
       .tweet-item__left
         .image-profile
-          = image_tag "noimageblack.png", class: "user-image"
+          = image_tag "/noimageblack.png", class: "user-image"
       .tweet-item__right
         = form_with model: @tweet, url: tweets_path, method: :post, class: :new_tweet, local: true do |f|
           .tweet-form
@@ -25,7 +25,7 @@
       .tweet-item
         .tweet-item__left
           .image-profile
-            = image_tag "noimageblack.png", class: "user-image"
+            = image_tag "/noimageblack.png", class: "user-image"
         .tweet-item__right
           .tweet-title
             %span.tweet-user
