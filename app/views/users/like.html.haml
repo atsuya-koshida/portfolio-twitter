@@ -4,13 +4,13 @@
     .timeline-center__header
       %span.current-menu
         = @user.nickname
-        のページ
+        いいね一覧
       = render "relationships/followbutton", user: @user
     .timeline-center__menu
       = link_to "ツイート一覧", user_path(@user.id), class: "mytweet-menu"
       = link_to "いいね一覧", like_user_path(@user.id), class: "mylike-menu"
     .timeline-center__tweet
-    - @tweets.each do |tweet|
+    - @liked_tweets.each do |tweet|
       = link_to tweet_path(tweet.id), class: "link" do
         .tweet-item
           .tweet-item__left

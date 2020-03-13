@@ -6,9 +6,9 @@ class UsersController < ApplicationController
     @liked_tweets = @user.liked_tweets
   end
 
-  def likes
-    @user = User.find_by(id: params[:id])
-    @likes = Like.where(user_id: @user.id)
+  def like
+    @user = User.find(params[:id])
+    @liked_tweets = @user.liked_tweets
   end
 
   private
