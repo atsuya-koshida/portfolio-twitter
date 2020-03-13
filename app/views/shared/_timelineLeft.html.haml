@@ -5,10 +5,10 @@
         %li.menu-item
           = icon("fas fa-home", class: 'menu-icon')
           ホーム
-      %li.menu-item
-        = icon('far fa-heart', class: 'menu-icon')
-        いいね一覧
-      
+      = link_to like_user_path(current_user), class: "link" do
+        %li.menu-item
+          = icon('far fa-heart', class: 'menu-icon')
+          いいね一覧
       = link_to user_path(current_user), class: "link" do
         %li.menu-item
           = icon("fas fa-home", class: 'menu-icon')

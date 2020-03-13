@@ -16,7 +16,7 @@
             %span.tweet-date
               = @tweet.created_at.to_s(:datetime_jp)
             %span.like-btn
-              = icon('far fa-heart fa-fw', class: 'like-icon')
+              = render partial: 'likes/like', locals: { tweet: @tweet}
           .tweet-content
             = simple_format(@tweet.text)
           - if user_signed_in? && current_user.id == @tweet.user_id
@@ -33,7 +33,7 @@
     .timeline-center__comment
       - if current_user
         = form_with(model: [@tweet, @comment], local: true, id: "new-comment" ) do |form|
-          = form.text_area :text, placeholder: "コメントする", rows: "2", class: "comment-text"
+          = form.text_area :text, placeholder: "コメントする", rows: "3", class: "comment-text"
           = form.submit "SEND", class: "comment-btn btn btn-primary"
       - else
         %strong

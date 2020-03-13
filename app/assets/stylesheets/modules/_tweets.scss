@@ -37,13 +37,17 @@
 
   &__menu {
     display: flex;
-    border: 1px solid #e6e6e6;
     .mytweet-menu {
       width: 50%;
       height: 50px;
       text-align: center;
       line-height: 50px;
       text-decoration: none;
+      border: 1px solid #e6e6e6;
+      &:hover {
+        background-color: #e6e6e6;
+        transition: 0.3s;
+      }
     }
     .mylike-menu {
       width: 50%;
@@ -51,6 +55,11 @@
       text-align: center;
       line-height: 50px;
       text-decoration: none;
+      border: 1px solid #e6e6e6;
+      &:hover {
+        background-color: #e6e6e6;
+        transition: 0.3s;
+      }
     }
   }
 
@@ -76,6 +85,15 @@
     &__left {
       flex-basis: 49px;
       margin: 0 5px;
+      .image-profile {
+        object-fit: cover;
+        height: 50px;
+        width: 50px;
+        background-color: skyblue;
+        .user-image {
+          border-radius: 50%;
+        }
+      }
     }
     &__right {
       width: 100%;
@@ -122,12 +140,6 @@
     height: 10px;
     background-color: rgb(230, 236, 240);
   }
-}
-.image-profile {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  background-color: skyblue;
 }
 
 .timeline-right {

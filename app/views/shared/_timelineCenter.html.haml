@@ -6,6 +6,7 @@
     .tweet-item
       .tweet-item__left
         .image-profile
+          = image_tag "noimageblack.png", class: "user-image"
       .tweet-item__right
         = form_with model: @tweet, url: tweets_path, method: :post, class: :new_tweet, local: true do |f|
           .tweet-form
@@ -24,26 +25,14 @@
       .tweet-item
         .tweet-item__left
           .image-profile
+            = image_tag "noimageblack.png", class: "user-image"
         .tweet-item__right
           .tweet-title
             %span.tweet-user
               = tweet.user.nickname
             %span.tweet-date
               = tweet.created_at.to_s(:datetime_jp)
-            - if user_signed_in?
-              - if tweet.liked_by?(current_user)
-                / ログインしているユーザーがファボしたかどうかで分岐
-                %p
-                  %span お気に入り解除:
-                  = link_to tweet.likes.count, tweet_likes_path(tweet.id), method: :delete, remote: true
-              - else
-                %p
-                  %span お気に入り登録:
-                  = link_to tweet.likes.count, tweet_likes_path(tweet.id), method: :post, remote: true
-            - else
-              %p
-                %span お気に入り数:
-                = tweet.favorites.count
+            = render partial: 'likes/like', locals: { tweet: tweet}
           .tweet-content
             = simple_format(tweet.text)
           - if tweet.images.attached?
