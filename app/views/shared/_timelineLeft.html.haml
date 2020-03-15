@@ -13,6 +13,10 @@
         %li.menu-item
           = icon("fas fa-home", class: 'menu-icon')
           マイページ
+      = link_to edit_user_path(current_user), class: "link" do
+        %li.menu-item
+          = icon("fas fa-cog", class: 'menu-icon')
+          設定
       = link_to destroy_user_session_path, method: :delete, class: "link" do
         %li.menu-item
           = icon("fas fa-sign-out-alt", class: 'menu-icon')

@@ -15,7 +15,10 @@
         .tweet-item
           .tweet-item__left
             .image-profile
-              = image_tag "/noimageblack.png", class: "user-image"
+              - if @user.image.blank?
+                = image_tag "/noimageblack.png", class: "user-image"
+              - else
+                = image_tag @user.image, class: "user-image"
           .tweet-item__right
             .tweet-title
               %span.tweet-user

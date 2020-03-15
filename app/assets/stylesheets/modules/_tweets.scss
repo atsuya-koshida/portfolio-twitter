@@ -86,10 +86,11 @@
       flex-basis: 49px;
       margin: 0 5px;
       .image-profile {
-        object-fit: cover;
-        height: 50px;
         width: 50px;
         .user-image {
+          object-fit: cover;
+          height: 50px;
+          width: 50px;
           border-radius: 50%;
         }
       }

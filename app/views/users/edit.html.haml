@@ -1,0 +1,18 @@
+#timeline
+  = render "shared/timelineLeft"
+  .timeline-center
+    .timeline-center__header
+      %span.current-menu
+        ユーザー情報編集
+    .timeline-center__tweet
+      = form_with model: current_user, url: user_path, local: true do |f|
+        .title
+          プロフィール画像
+        = f.file_field :image
+        .title
+          ニックネーム
+        = f.text_field :nickname, class: "text-field", placeholder: '  例）フリマ太朗'
+        .title
+          メールアドレス
+        = f.email_field :email, class: "text-field", placeholder: '  PC・携帯どちらでも可'
+        = f.submit '更新する', class: "submit-btn"
